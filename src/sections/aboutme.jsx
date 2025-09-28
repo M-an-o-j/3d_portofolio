@@ -32,16 +32,16 @@ const Aboutme = () => {
                 </div>
 
                 {/* Content Section */}
-                <div className="space-y-8 mb-16">
+                <div className="space-y-8 mb-16 transform hover:scale-[1.02]  hover:shadow-2xl bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 shadow-xl hover:bg-white/10 transition-all duration-300">
                     {content.map((item, index) => (
                         <div 
                             key={index} 
-                            className="transform hover:scale-[1.02] transition-all duration-300 hover:shadow-2xl"
+                            className=""
                             style={{
                                 animation: `fadeInUp 0.8s ease-out ${index * 0.2}s both`
                             }}
                         >
-                            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 shadow-xl hover:bg-white/10 transition-all duration-300">
+                            <div className="">
                                 <p className="text-lg md:text-xl leading-relaxed text-gray-200 font-light">
                                     {item}
                                 </p>
