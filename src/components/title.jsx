@@ -4,25 +4,40 @@ import { Text } from '@react-three/drei';
 
 // Create a separate component for the animated text
 const AnimatedText = () => {
-    const ref = useRef();
+    const title_ref = useRef();
+    const role_ref = useRef();
     const { mouse } = useThree();
 
     useFrame(() => {
-        if (ref.current) {
+        if (title_ref.current) {
             // Smooth rotation with lerp
-            ref.current.rotation.y += (mouse.x * 0.5 - ref.current.rotation.y) * 0.1;
-            ref.current.rotation.x += (-mouse.y * 0.5 - ref.current.rotation.x) * 0.1;
+            title_ref.current.rotation.y += (mouse.x * 0.5 - title_ref.current.rotation.y) * 0.1;
+            title_ref.current.rotation.x += (-mouse.y * 0.5 - title_ref.current.rotation.x) * 0.1;
 
             // Clamp rotation limits
-            ref.current.rotation.y = Math.max(-0.5, Math.min(0.5, ref.current.rotation.y));
-            ref.current.rotation.x = Math.max(-0.3, Math.min(0.3, ref.current.rotation.x));
+            title_ref.current.rotation.y = Math.max(-0.5, Math.min(0.5, title_ref.current.rotation.y));
+            title_ref.current.rotation.x = Math.max(-0.3, Math.min(0.3, title_ref.current.rotation.x));
         }
-    });
+        if (role_ref.current) {
+            // Smooth rotation with lerp
+            role_ref.current.rotation.y += (mouse.x * 0.5 - role_ref.current.rotation.y) * 0.1;
+            role_ref.current.rotation.x += (-mouse.y * 0.5 - role_ref.current.rotation.x) * 0.1;
 
+            // Clamp rotation limits
+            role_ref.current.rotation.y = Math.max(-0.5, Math.min(0.5, role_ref.current.rotation.y));
+            role_ref.current.rotation.x = Math.max(-0.3, Math.min(0.3, role_ref.current.rotation.x));
+        }
+        
+    });
     return (
-        <Text ref={ref} fontSize={2} position={[0, 0, 1]}>
+        <>
+        <Text ref={title_ref} fontSize={2} position={[0, 0.5, 1]}>
             Manoj
         </Text>
+        <Text ref={role_ref} fontSize={1} position={[0, -1, 1]}>
+            Software Engineer
+        </Text>
+        </>
     );
 };
 
