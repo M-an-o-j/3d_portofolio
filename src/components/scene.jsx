@@ -6,87 +6,91 @@ import { useGLTF } from '@react-three/drei';
 useGLTF.preload('/assets/3d_asset/little_planet_earth/scene.gltf');
 
 const InteractiveModel = () => {
-    const { scene } = useGLTF('/assets/3d_asset/little_planet_earth/scene.gltf');
-    const ref = useRef();
-    const { mouse, size } = useThree();
-    const [isMobile, setIsMobile] = useState(false);
-    const [touchPosition, setTouchPosition] = useState({ x: 0, y: 0 });
-    const [isDragging, setIsDragging] = useState(false);
+  const { scene } = useGLTF('/assets/3d_asset/little_planet_earth/scene.gltf');
+  const ref = useRef();
+  const { mouse, size } = useThree();
+  const [isMobile, setIsMobile] = useState(false);
+  const [touchPosition, setTouchPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
 
-    // Detect mobile device
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth <= 768 || 'ontouchstart' in window);
-        };
-        
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768 || 'ontouchstart' in window);
+    };
 
-    // Handle touch events
-    useEffect(() => {
-        const handleTouchStart = (e) => {
-            setIsDragging(true);
-            const touch = e.touches[0];
-            setTouchPosition({
-                x: (touch.clientX / size.width) * 2 - 1,
-                y: -(touch.clientY / size.height) * 2 + 1
-            });
-        };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
 
-        const handleTouchMove = (e) => {
-            if (!isDragging) return;
-            const touch = e.touches[0];
-            setTouchPosition({
-                x: (touch.clientX / size.width) * 2 - 1,
-                y: -(touch.clientY / size.height) * 2 + 1
-            });
-        };
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-        const handleTouchEnd = () => {
-            setIsDragging(false);
-        };
+  // Handle touch events
+  useEffect(() => {
+    const handleTouchStart = (e) => {
+      setIsDragging(true);
+      const touch = e.touches[0];
+      setTouchPosition({
+        x: (touch.clientX / size.width) * 2 - 1,
+        y: -(touch.clientY / size.height) * 2 + 1,
+      });
+    };
 
-        if (isMobile) {
-            window.addEventListener('touchstart', handleTouchStart);
-            window.addEventListener('touchmove', handleTouchMove);
-            window.addEventListener('touchend', handleTouchEnd);
+    const handleTouchMove = (e) => {
+      if (!isDragging) return;
+      const touch = e.touches[0];
+      setTouchPosition({
+        x: (touch.clientX / size.width) * 2 - 1,
+        y: -(touch.clientY / size.height) * 2 + 1,
+      });
+    };
 
-            return () => {
-                window.removeEventListener('touchstart', handleTouchStart);
-                window.removeEventListener('touchmove', handleTouchMove);
-                window.removeEventListener('touchend', handleTouchEnd);
-            };
-        }
-    }, [isMobile, isDragging, size]);
+    const handleTouchEnd = () => {
+      setIsDragging(false);
+    };
 
-    useFrame(() => {
-        if (ref.current) {
-            // Use touch position for mobile, mouse position for desktop
-            const inputX = isMobile ? touchPosition.x : mouse.x;
-            const inputY = isMobile ? touchPosition.y : mouse.y;
-            
-            // Adjust sensitivity based on device
-            const sensitivity = isMobile ? 0.6 : 0.5;
-            const lerpFactor = isMobile ? 0.08 : 0.1;
-            
-            // Smooth rotation with lerp
-            ref.current.rotation.y += (inputX * sensitivity - ref.current.rotation.y) * lerpFactor;
-            ref.current.rotation.x += (-inputY * sensitivity - ref.current.rotation.x) * lerpFactor;
-            
-            // Clamp rotation limits
-            ref.current.rotation.y = Math.max(-0.5, Math.min(0.5, ref.current.rotation.y));
-            ref.current.rotation.x = Math.max(-0.3, Math.min(0.3, ref.current.rotation.x));
-        }
-    });
-    
-    // Adjust scale based on screen size
-    const scale = isMobile ? 0.005 : 0.01;
-    const position = isMobile ? [0, -0.4, 0] : [0, -0.5, 0];
-    
-    return <primitive ref={ref} object={scene} scale={scale} position={position} />;
+    if (isMobile) {
+      window.addEventListener('touchstart', handleTouchStart);
+      window.addEventListener('touchmove', handleTouchMove);
+      window.addEventListener('touchend', handleTouchEnd);
+
+      return () => {
+        window.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('touchmove', handleTouchMove);
+        window.removeEventListener('touchend', handleTouchEnd);
+      };
+    }
+  }, [isMobile, isDragging, size]);
+
+  useFrame(() => {
+    if (ref.current) {
+      // Infinite base rotation
+      ref.current.rotation.y += 0.002; // 🌍 Constant spin
+
+      // Input interaction
+      const inputX = isMobile ? touchPosition.x : mouse.x;
+      const inputY = isMobile ? touchPosition.y : mouse.y;
+
+      const sensitivity = isMobile ? 0.6 : 0.5;
+      const lerpFactor = isMobile ? 0.08 : 0.1;
+
+      // Smooth rotation offset
+      const targetY = inputX * sensitivity;
+      const targetX = -inputY * sensitivity;
+
+      ref.current.rotation.y += (targetY - ref.current.rotation.y) * lerpFactor;
+      ref.current.rotation.x += (targetX - ref.current.rotation.x) * lerpFactor;
+
+      // Clamp X rotation (so Earth doesn't flip upside down)
+      ref.current.rotation.x = Math.max(-0.3, Math.min(0.3, ref.current.rotation.x));
+    }
+  });
+
+  // Adjust scale and position
+  const scale = isMobile ? 0.005 : 0.008;
+  const position = isMobile ? [0, -0.4, 0] : [0, -0.5, 0];
+
+  return <primitive ref={ref} object={scene} scale={scale} position={position} />;
 };
 
 export default InteractiveModel;

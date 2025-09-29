@@ -90,17 +90,17 @@ const AnimatedText = () => {
     });
 
     // Adjust text sizes and positions based on screen size
-    const titleSize = isMobile ? 0.7 : 2;
-    const roleSize = isMobile ? 0.3 : 1;
+    const titleSize = isMobile ? 0.7 : 1.5;
+    const roleSize = isMobile ? 0.3 : 0.8;
     const titlePosition = isMobile ? [0, 0.1, 1] : [0, 0.5, 1];
     const rolePosition = isMobile ? [0, -0.6, 1] : [0, -1, 1];
 
     return (
         <>
-            <Text ref={title_ref} fontSize={titleSize} position={titlePosition}>
+            <Text ref={title_ref} font='/assets/fonts/Knewave-Regular.ttf' fontSize={titleSize} position={titlePosition}>
                 Manoj
             </Text>
-            <Text ref={role_ref} fontSize={roleSize} position={rolePosition}>
+            <Text ref={role_ref} font='/assets/fonts/Knewave-Regular.ttf' fontSize={roleSize} position={rolePosition}>
                 Software Engineer
             </Text>
         </>

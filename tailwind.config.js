@@ -1,10 +1,15 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // scan all React files
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        knewave: ['Knewave', 'cursive'], // fallback is cursive
+        permanent_marker: ['Permanent Marker', 'cursive'], // fallback is cursive
+      },
+    },
   },
   plugins: [],
 }

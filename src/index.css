@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Knewave';
+  src: url('/public/assets/fonts/Knewave-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Knewave';
+  src: url('/public/assets/fonts/PermanentMarker-Regular.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
