@@ -46,7 +46,7 @@ const Hero = () => {
       </Suspense>
       
       {/* Your Original Canvas with Enhanced Lighting */}
-      <Canvas style={{ height: '100vh' }}>
+      <Canvas style={{ height: '100vh', width: '100vw' }}>
         {/* Enhanced lighting setup */}
         <ambientLight intensity={0.6} color="#4A5568" />
         <directionalLight 
