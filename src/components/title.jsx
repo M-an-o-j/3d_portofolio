@@ -90,8 +90,8 @@ const AnimatedText = () => {
     });
 
     // Adjust text sizes and positions based on screen size
-    const titleSize = isMobile ? 0.9 : 2;
-    const roleSize = isMobile ? 0.4 : 1;
+    const titleSize = isMobile ? 0.7 : 2;
+    const roleSize = isMobile ? 0.3 : 1;
     const titlePosition = isMobile ? [0, 0.1, 1] : [0, 0.5, 1];
     const rolePosition = isMobile ? [0, -0.6, 1] : [0, -1, 1];
 
