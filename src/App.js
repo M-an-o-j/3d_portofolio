@@ -7,7 +7,7 @@ import Aboutme from './sections/aboutme'
 const App = () => {
   return (
     <div 
-      className='w-full h-full bg-[#008DDA]'
+      className='w-full h-full bg-gradient-to-b from-[#0f172a] via-[#1e1b4b] to-[#0f172a]'
       style={{ 
         background: '',
         minHeight: '100vh' 

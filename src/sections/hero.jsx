@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import InteractiveModel from '../components/scene';
 import AnimatedText from '../components/title';
 import Clouds from '../components/clouds';
+import BackgroundParticles from '../components/backgroundParticles';
 
 // Loading component - moved outside Canvas
 const Loader = () => (
@@ -14,34 +15,23 @@ const Loader = () => (
   </div>
 );
 
-// Floating particles for ambient effect
-const BackgroundParticles = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-pulse"></div>
-    <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-purple-400 rounded-full opacity-40 animate-pulse" style={{animationDelay: '1s'}}></div>
-    <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-violet-400 rounded-full opacity-30 animate-pulse" style={{animationDelay: '2s'}}></div>
-    <div className="absolute top-2/3 right-1/4 w-1.5 h-1.5 bg-indigo-400 rounded-full opacity-50 animate-pulse" style={{animationDelay: '0.5s'}}></div>
-    <div className="absolute bottom-1/3 right-2/3 w-2 h-2 bg-blue-300 rounded-full opacity-45 animate-pulse" style={{animationDelay: '1.5s'}}></div>
-  </div>
-);
-
 const Hero = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* Enhanced Background */}
-      <div className="absolute inset-0 b" /> 
+      {/* Gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0f172a] via-[#1e1b4b] to-[#0f172a] -z-20" /> 
 
-      {/* Floating particles */}
+      {/* Floating stars */}
       <BackgroundParticles />
-      
+
       {/* Loading overlay outside Canvas */}
       <Suspense fallback={<Loader />}>
         <div />
       </Suspense>
       
-      {/* Your Original Canvas with Enhanced Lighting */}
+      {/* Your 3D Canvas */}
       <Canvas style={{ height: '100vh', width: '100vw' }}>
-        {/* Enhanced lighting setup */}
+        {/* Lights */}
         <ambientLight intensity={0.6} color="#4A5568" />
         <directionalLight 
           position={[10, 10, 5]} 

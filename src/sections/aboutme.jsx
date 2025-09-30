@@ -1,14 +1,18 @@
 import React from 'react'
 import plane from '../assets/images/plane.png'
+import BackgroundParticles from '../components/backgroundParticles'
 
 const Aboutme = () => {
     const content = [
         "Hi, I'm Manoj — a developer with a unique journey that started in the commerce stream but grew into a deep passion for technology. My spark for science and computers truly ignited when I watched Iron Man. While Tony Stark may be a fictional character, his creativity, problem-solving, and futuristic vision inspired me to explore the limitless possibilities of tech. From revisiting old science books to experimenting with coding, I gradually dove into web development, machine learning, computer vision, and artificial intelligence, each step fueling my curiosity and pushing me further into the world of innovation.",
         "Today, I blend creativity with technical expertise to build projects that are both functional and impactful. My skills include Software Engineering, Full Stack Development, Python, FastAPI, Microservices, React.js, Blockchain, LLMs, LangChain, AWS, and Arduino/IoT. This portfolio itself — built with React.js and TailwindCSS — is a small reflection of my journey, passion, and commitment to continuous learning. Outside of coding, I'm a movie buff, inspired by stories and characters like Tony Stark, who remind us that technology is not just about machines but about creating meaningful impact."
     ]
+            
 
     return (
         <div className="min-h-screen relative overflow-hidden">
+
+            <BackgroundParticles />
 
             {/* Flying Plane */}
             <div className="absolute top-1/3 -right-0 w-20 h-20 animate-flight z-0">
@@ -49,7 +53,7 @@ const Aboutme = () => {
             <style>
                 {`
                     @keyframes flight {
-                        0% { transform: translateX(0) translateY(50) rotate(30deg); opacity: 0; }
+                        0% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0; }
                         10% { opacity: 1; }
                         50% { transform: translateX(-60vw) translateY(-50px) rotate(-10deg); }
                         100% { transform: translateX(-120vw) translateY(-100px) rotate(10deg); opacity: 0; }
