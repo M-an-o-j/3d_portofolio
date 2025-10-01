@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const BackgroundParticles = () => {
-  const starCount = 25;
+  const starCount = 100;
   const [meteors, setMeteors] = useState([]);
   const [stars, setStars] = useState([]);
 

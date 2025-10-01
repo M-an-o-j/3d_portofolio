@@ -2,6 +2,8 @@ import React from 'react'
 import TextScene from './components/title'
 import Hero from './sections/hero'
 import Aboutme from './sections/aboutme'
+// import Skills from './sections/skills'
+import SkillConstellation from './sections/skills'
 
 
 const App = () => {
@@ -16,6 +18,7 @@ const App = () => {
       <div className="w-full">
         <Hero />
         <Aboutme />
+        <SkillConstellation />
       </div>
     </div>
   )
