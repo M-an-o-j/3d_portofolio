@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Mail, Linkedin, Github, Send, Sparkles } from "lucide-react";
+import BackgroundParticles from "../components/backgroundParticles";
 
 export default function AlienSignal() {
   const [activated, setActivated] = useState(false);
@@ -16,16 +17,16 @@ export default function AlienSignal() {
     setActivated(!activated);
   };
 
-  useEffect(() => {
-    const newStars = Array.from({ length: 100 }, () => ({
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 2 + 1,
-      opacity: Math.random() * 0.5 + 0.3,
-      delay: Math.random() * 3
-    }));
-    setStars(newStars);
-  }, []);
+//   useEffect(() => {
+//     const newStars = Array.from({ length: 100 }, () => ({
+//       x: Math.random() * 100,
+//       y: Math.random() * 100,
+//       size: Math.random() * 2 + 1,
+//       opacity: Math.random() * 0.5 + 0.3,
+//       delay: Math.random() * 3
+//     }));
+//     setStars(newStars);
+//   }, []);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -40,7 +41,7 @@ export default function AlienSignal() {
 
   return (
     <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      
+      <BackgroundParticles />
       {/* Animated Stars */}
       {stars.map((star, i) => (
         <div

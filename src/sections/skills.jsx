@@ -279,7 +279,7 @@ export default function SkillConstellation() {
       <div className="absolute inset-0 bg-gradient-radial from-cyan-950/20 via-transparent to-transparent animate-pulse-slow pointer-events-none"></div>
       
       <Canvas
-        camera={{ position: [0, 0, 8], fov: 60 }}
+        camera={{ position: [0, 0, 10], fov: 60 }}
         gl={{ antialias: true, alpha: true }}
         style={{ touchAction: 'none' }}
       >
