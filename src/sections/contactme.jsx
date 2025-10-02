@@ -17,6 +17,8 @@ export default function AlienSignal() {
     setActivated(!activated);
   };
 
+    
+
 //   useEffect(() => {
 //     const newStars = Array.from({ length: 100 }, () => ({
 //       x: Math.random() * 100,
@@ -40,7 +42,7 @@ export default function AlienSignal() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center  overflow-hidden">
       <BackgroundParticles />
       {/* Animated Stars */}
       {stars.map((star, i) => (
@@ -161,19 +163,23 @@ export default function AlienSignal() {
             </div>
 
             {/* Send Message Button */}
-            <button className="mt-12 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full text-white font-semibold flex items-center gap-2 hover:shadow-lg hover:shadow-cyan-500/50 hover:scale-105 transition-all duration-300 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+            <a 
+              href="mailto:mmanoj20037@outlook.com?subject=Contact%20from%20Portfolio&body=Hello,%0D%0A%0D%0AI%20would%20like%20to%20connect%20with%20you."
+              className="mt-12 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full text-white font-semibold flex items-center gap-2 hover:shadow-lg hover:shadow-cyan-500/50 hover:scale-105 transition-all duration-300 animate-slide-up" 
+              style={{ animationDelay: '0.4s' }}
+            >
               <Send className="w-4 h-4" />
               Send Transmission
-            </button>
+            </a>
           </div>
         )}
 
         {/* Section Text */}
         <div className="text-center text-white max-w-2xl px-4 animate-fade-in">
-          <h2 className="text-5xl font-bold font-knewave bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent animate-gradient mb-4">
+          <h2 className="text-5xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
             🛸 Initiate Contact Protocol
           </h2>
-          <p className="mt-4 text-lg font-permanent_marker text-gray-300 leading-relaxed">
+          <p className="mt-4 text-lg text-gray-300 leading-relaxed">
             My alien vessel is monitoring all frequencies across the digital cosmos. 
             Activate the contact beam to reveal communication channels and establish 
             an interdimensional connection 🌌
