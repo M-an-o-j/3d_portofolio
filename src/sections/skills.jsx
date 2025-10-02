@@ -339,7 +339,7 @@ export default function SkillConstellation() {
       <div className="absolute top-8 left-8 text-white z-10 pointer-events-none">
         <div className="backdrop-blur-md bg-black/30 p-6 rounded-2xl border border-cyan-500/30 shadow-2xl shadow-cyan-500/20">
           <h1 className="text-5xl font-knewave font-bold mb-3 bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent animate-gradient">
-            Skill Constellation
+            Skills Constellation
           </h1>
           <p className="text-gray-400 font-permanent_marker text-sm flex items-center gap-2">
             <span className="w-2 h-2  bg-cyan-400 rounded-full animate-pulse"></span>
