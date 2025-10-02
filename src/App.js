@@ -4,6 +4,7 @@ import Hero from './sections/hero'
 import Aboutme from './sections/aboutme'
 // import Skills from './sections/skills'
 import SkillConstellation from './sections/skills'
+import ProjectGalaxy from './sections/projects'
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Hero />
         <Aboutme />
         <SkillConstellation />
+        <ProjectGalaxy />
       </div>
     </div>
   )
