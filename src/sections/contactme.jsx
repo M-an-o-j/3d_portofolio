@@ -176,10 +176,10 @@ export default function AlienSignal() {
 
         {/* Section Text */}
         <div className="text-center text-white max-w-2xl px-4 animate-fade-in">
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+          <h2 className="text-5xl font-bold font-knewave bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
             🛸 Initiate Contact Protocol
           </h2>
-          <p className="mt-4 text-lg text-gray-300 leading-relaxed">
+          <p className="mt-4 text-lg font-permanent_marker text-gray-300 leading-relaxed">
             My alien vessel is monitoring all frequencies across the digital cosmos. 
             Activate the contact beam to reveal communication channels and establish 
             an interdimensional connection 🌌
